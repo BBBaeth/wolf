@@ -15,27 +15,30 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 	o.y = 0;
 	color_sky = -1;
 	color_floor = FLOOR  - 1;
-	while (++color_sky <= FLOOR)
+	if (WALLH < HA)
 	{
-		pos = (x * BPP) + (color_sky * S_L);
-		if (x < LA && y < HA && x >= 0 && y >= 0)
-			{
-				IMG_DATA[pos + 0] = (char)250;
-				IMG_DATA[pos + 1] = (char)120;
-				IMG_DATA[pos + 2] = (char)120;
-				IMG_DATA[pos + 3] = (char)((0 + color_sky / 2) % 255);
-			}
-	}
-	while (++color_floor < HA)
-	{
-		pos = (x * BPP) + (color_floor * S_L);
-		if (x < LA && y < HA && x >= 0 && y >= 0)
-			{
-				IMG_DATA[pos + 0] = (char)100;
-				IMG_DATA[pos + 1] = (char)100;
-				IMG_DATA[pos + 2] = (char)160;
-				IMG_DATA[pos + 3] = (char)200;
-			}
+		while (++color_sky <= FLOOR)
+		{
+			pos = (x * BPP) + (color_sky * S_L);
+			if (x < LA && y < HA && x >= 0 && y >= 0)
+				{
+					IMG_DATA[pos + 0] = (char)250;
+					IMG_DATA[pos + 1] = (char)120;
+					IMG_DATA[pos + 2] = (char)120;
+					IMG_DATA[pos + 3] = (char)((0 + color_sky / 2) % 255);
+				}
+		}
+		while (++color_floor < HA)
+		{
+			pos = (x * BPP) + (color_floor * S_L);
+			if (x < LA && y < HA && x >= 0 && y >= 0)
+				{
+					IMG_DATA[pos + 0] = (char)100;
+					IMG_DATA[pos + 1] = (char)100;
+					IMG_DATA[pos + 2] = (char)160;
+					IMG_DATA[pos + 3] = (char)200;
+				}
+		}
 	}
 	if (UP == 1)
 		i = 0;
@@ -51,7 +54,7 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 		o.y = abs(ROOF) * WALLR;
 	while (y < FLOOR)
 	{
-		if (y > ROOF && y < FLOOR && dist < 40)
+		if (y > ROOF && y < FLOOR && dist < 35)
 		{
 			pos = (x * BPP) + (y * S_L);
 			if (x < LA && y < HA && x >= 0 && y >= 0)
@@ -91,7 +94,7 @@ void			get_dir(int distx, int disty, float dist, t_mlx *list)
 
 	up = 0;
 	right = 0;
-	dist -= 0.03;
+	dist -= 0.1;
 	dist_x = (int)(PLAYER->x + PLAYER->eye_x * dist);
 	dist_y = (int)(PLAYER->y + PLAYER->eye_y * dist);
 	if (dist_y > disty)
@@ -116,21 +119,21 @@ void			lets_search(int x, t_mlx *list, t_point o)
 	float	dist;
 
 	dist = 0;
-	while (dist < 40)
+	while (dist < 35)
 	{
-		distx = (int)(PLAYER->x + PLAYER->eye_x * dist);
-		disty = (int)(PLAYER->y + PLAYER->eye_y * dist);
+		distx = (float)(PLAYER->x + PLAYER->eye_x * dist);
+		disty = (float)(PLAYER->y + PLAYER->eye_y * dist);
 		if (distx < 0 || distx > STAGE->map_la || disty < 0
-			|| disty > STAGE->map_ha)
+			|| disty > STAGE->map_ha || !(MAP[disty][distx]))
 		{
-			dist = 40;
+			dist = 35;
 			break;
 		}
 		if (MAP[disty][distx] == '1')
 			break;
-		dist += 0.03;
+		dist += 0.1;
 	}
-	if (dist < 40)
+	if (dist < 35)
 		get_dir(distx, disty, dist, list);
 	lets_persp(x, dist, list, o);
 }

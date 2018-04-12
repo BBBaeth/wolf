@@ -2,8 +2,8 @@
 
 void	init_list(t_mlx *list)
 {
-	HA = 800;
-	LA = 1200;
+	HA = 600;
+	LA = 1000;
 	if (!(MLX_PTR = mlx_init()))
 		ft_fail("Error: Connection failed.", list);
 	if (!(WIN_PTR = mlx_new_window(MLX_PTR, LA, HA, "WOLF3D")))
@@ -17,7 +17,7 @@ void	init_list(t_mlx *list)
 	STAGE = new_stage(list);
 	STAGE->map_nb = 0;
 	PLAYER = new_player(list);
-	FOV = 1.0472 / 2;
+	FOV = 1.0472 / 1.86;
 	generate_texture(list);
 }
 

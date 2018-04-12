@@ -25,6 +25,15 @@ int		window_closed(t_mlx *list)
 	exit(0);
 }
 
+int		key_pressed(int key, t_mlx *list)
+{
+	if (key == 126 || key == 125)
+		move_dir(key, list);
+	else if (key == 123 || key == 124)
+		move_side(key, list);
+	return (0);
+}
+
 int		move_dir(int key, t_mlx *list)
 {
 	float	x;
@@ -34,16 +43,16 @@ int		move_dir(int key, t_mlx *list)
 	y = PLAYER->y;
 	if (key == 126)
 	{
-		PLAYER->x += cos(PLAYER->a);
-		PLAYER->y += sin(PLAYER->a);
+		PLAYER->x += cos(PLAYER->a) * 0.2;
+		PLAYER->y += sin(PLAYER->a) * 0.2;
 	}
 	else if (key == 125)
 	{
-		PLAYER->x -= cos(PLAYER->a);
-		PLAYER->y -= sin(PLAYER->a);
+		PLAYER->x -= cos(PLAYER->a) * 0.2;
+		PLAYER->y -= sin(PLAYER->a) * 0.2;
 	}
 	if (!(MAP[(int)PLAYER->y][(int)PLAYER->x])
-		|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1')
+		|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1' || (key == 126 && MAP[(int)(PLAYER->y + sin(PLAYER->a))][(int)(PLAYER->x + cos(PLAYER->a))] == '1') || (key == 125 && MAP[(int)(PLAYER->y - sin(PLAYER->a))][(int)(PLAYER->x - cos(PLAYER->a))] == '1'))
 	{
 		PLAYER->x = x;
 		PLAYER->y = y;
@@ -55,9 +64,9 @@ int		move_dir(int key, t_mlx *list)
 int		move_side(int key, t_mlx *list)
 {
 	if (key == 123)
-		PLAYER->a -= 0.15;
+		PLAYER->a -= 0.15 * 0.09;
 	else if (key == 124)
-		PLAYER->a += 0.15;
+		PLAYER->a += 0.15 * 0.09;
 	if (PLAYER->a >= 6.30 || PLAYER->a <= -6.30)
 		PLAYER->a = 0;
 	image_replacer(list);

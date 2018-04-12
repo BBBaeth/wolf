@@ -140,5 +140,8 @@ void		generate_texture(t_mlx *list);
 void		free_textures(t_mlx *list);
 void		attribute_text_color_to_image(t_mlx *list, int i, int p, t_point o);
 float		get_ox(t_mlx *list, float dist, int i);
+int		key_pressed(int key, t_mlx *list);
+int		move_dir(int key, t_mlx *list);
+int		move_side(int key, t_mlx *list);
 
 #endif
