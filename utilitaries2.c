@@ -22,7 +22,6 @@ void	image_replacer(t_mlx *list)
 	if (!(stmp = mlx_new_image(MLX_PTR, LA, HA)))
 		ft_fail("Error: Unable to generate image.", list);
 	IMG_PTR = stmp;
-	floor_to_roof(list);
 	lets_cast(list);
 	mlx_clear_window(MLX_PTR, WIN_PTR);
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMG_PTR, 0, 0);

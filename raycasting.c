@@ -6,7 +6,6 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 	int			color_sky;
 	int			color_floor;
 	int			pos;
-	int			colr;
 	int			i;
 
 	ROOF = (float)HA / 2 - LA / (float)dist;
@@ -14,9 +13,9 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 	WALLH = (float)FLOOR - (float)ROOF;
 	y = ROOF;
 	o.y = 0;
-	color_sky = 0;
-	color_floor = FLOOR;
-	while (color_sky <= ROOF)
+	color_sky = -1;
+	color_floor = FLOOR  - 1;
+	while (++color_sky <= FLOOR)
 	{
 		pos = (x * BPP) + (color_sky * S_L);
 		if (x < LA && y < HA && x >= 0 && y >= 0)
@@ -24,11 +23,10 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 				IMG_DATA[pos + 0] = (char)250;
 				IMG_DATA[pos + 1] = (char)120;
 				IMG_DATA[pos + 2] = (char)120;
-				IMG_DATA[pos + 3] = (char)100;
+				IMG_DATA[pos + 3] = (char)((0 + color_sky / 2) % 255);
 			}
-		color_sky++;
 	}
-	while (color_floor <= HA)
+	while (++color_floor < HA)
 	{
 		pos = (x * BPP) + (color_floor * S_L);
 		if (x < LA && y < HA && x >= 0 && y >= 0)
@@ -36,15 +34,13 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 				IMG_DATA[pos + 0] = (char)100;
 				IMG_DATA[pos + 1] = (char)100;
 				IMG_DATA[pos + 2] = (char)160;
-				IMG_DATA[pos + 3] = (char)100;
+				IMG_DATA[pos + 3] = (char)200;
 			}
-		color_floor++;
 	}
-	colr = 200;
 	if (UP == 1)
-		i = 1;
-	else if (UP == -1)
 		i = 0;
+	else if (UP == -1)
+		i = 1;
 	else if (RIGHT == 1)
 		i = 2;
 	else
@@ -60,36 +56,30 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 			pos = (x * BPP) + (y * S_L);
 			if (x < LA && y < HA && x >= 0 && y >= 0)
 			{
-				IMG_DATA[pos + 0] = (char)colr - (float)(3 * dist);
-				IMG_DATA[pos + 1] = (char)colr - (float)(3 * dist);
-				IMG_DATA[pos + 2] = (char)190 - (float)(3 * dist);
-				IMG_DATA[pos + 3] = (char)0 + (int)((float)(4 * dist)) % 1000;
-			}
-			if (x < LA && y < HA && x >= 0 && y >= 0)
-			{
 				o.y += WALLR;
 				if (o.y > (float)(list->t[i]->height))
 						o.y = 0;
 				attribute_text_color_to_image(list, i, pos, o);
+				IMG_DATA[pos + 3] = (char)0 + (int)((float)(4 * dist)) % 1000;
 			}
 		}
 		y++;
 	}
 }
 
-int			get_ox(t_mlx *list, float dist, int i)
+float			get_ox(t_mlx *list, float dist, int i)
 {
 	float		collision_point;
 	int			strict_value;
 
 	collision_point = 0;
-	if (UP == 1)
+	if (UP != 0)
 		collision_point = (float)(PLAYER->x + PLAYER->eye_x * dist);
-	if (RIGHT == 1)
+	if (RIGHT != 0)
 		collision_point = (float)(PLAYER->y + PLAYER->eye_y * dist);
 	strict_value = floor(collision_point);
 	collision_point -= strict_value;
-	return ((float)collision_point * (float)list->t[i]->width);
+	return ((float)collision_point * list->t[i]->width);
 }
 
 void			get_dir(int distx, int disty, float dist, t_mlx *list)
@@ -153,6 +143,7 @@ void			lets_cast(t_mlx *list)
 
 	x = 0;
 	o.y = 0;
+	o.x = 0;
 	while (x < LA)
 	{
 		ray = (PLAYER->a - FOV / 2.0) + ((float)x / (float)LA * FOV);

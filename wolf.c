@@ -30,7 +30,6 @@ int		main(int argc, char **argv)
 		list = new_list();
 		init_list(list);
 		read_map(list);
-		floor_to_roof(list);
 		lets_cast(list);
 		mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMG_PTR, 0, 0);
 		let_mlx_loop(list);

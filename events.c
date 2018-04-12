@@ -4,6 +4,7 @@ int		window_closed(t_mlx *list)
 {
 	if (list)
 	{
+		free_textures(list);
 		close(FD);
 		if (MAP)
 			free(MAP);

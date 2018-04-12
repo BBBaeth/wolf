@@ -129,7 +129,6 @@ t_mlx		*new_list(void);
 t_level		*new_stage(t_mlx *list);
 t_player	*new_player(t_mlx *list);
 void		read_map(t_mlx *list);
-void		floor_to_roof(t_mlx *list);
 void		lets_cast(t_mlx *list);
 int			key_manager(int key, void *list);
 int			window_closed(t_mlx *list);
@@ -140,6 +139,6 @@ void		next_level(t_mlx *list);
 void		generate_texture(t_mlx *list);
 void		free_textures(t_mlx *list);
 void		attribute_text_color_to_image(t_mlx *list, int i, int p, t_point o);
-int			get_ox(t_mlx *list, float dist, int i);
+float		get_ox(t_mlx *list, float dist, int i);
 
 #endif
