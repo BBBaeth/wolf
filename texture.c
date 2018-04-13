@@ -4,7 +4,7 @@ t_texture	*xpm_texture(char *name, t_mlx *list)
 {
 	t_texture		*text;
 
-	if (!(text = malloc(sizeof(t_texture) * 1)))
+	if (!(text = (t_texture *)malloc(sizeof(t_texture) * 1)))
 		ft_fail("Error: Unable to allocate memory.", list);
 	if (!(text->ptr = mlx_xpm_file_to_image(MLX_PTR, name, &text->width,
 		&text->height)))
@@ -13,8 +13,6 @@ t_texture	*xpm_texture(char *name, t_mlx *list)
 		&text->endian)))
 		ft_fail("Error: Cannot read texture files.", list);
 	text->bpp = text->bpp / 8;
-	text->width = text->s_l / text->bpp;
-	text->height = text->width;
 	return (text);
 }
 
@@ -23,7 +21,7 @@ void	free_textures(t_mlx *list)
 	int		i;
 
 	i = 0;
-	while (i < 2)
+	while (i <= 4)
 	{
 		if (list->t[i] != NULL)
 		{
@@ -38,10 +36,11 @@ void	free_textures(t_mlx *list)
 
 void	generate_texture(t_mlx *list)
 {
-	if (!(*(list->t) = malloc(sizeof(t_texture*) * 6)))
+	if (!(*(list->t) = malloc(sizeof(t_texture*) * 5)))
 		ft_fail("Error: Unable to allocate memory.", list);
 	list->t[0] = xpm_texture("./tex/wall1.xpm", list);
 	list->t[1] = xpm_texture("./tex/wall2.xpm", list);
 	list->t[2] = xpm_texture("./tex/wall3.xpm", list);
 	list->t[3] = xpm_texture("./tex/wall4.xpm", list);
+	list->t[4] = xpm_texture("./tex/barrel.xpm", list);
 }
