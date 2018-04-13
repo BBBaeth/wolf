@@ -14,6 +14,22 @@ void	next_level(t_mlx *list)
 	image_replacer(list);
 }
 
+int		ft_security(t_mlx *list, float x, float y, int key)
+{
+	if (!(MAP[(int)PLAYER->y][(int)PLAYER->x])
+		|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1'
+			|| (key == 126 && MAP[(int)(PLAYER->y + sin(PLAYER->a))]
+				[(int)(PLAYER->x + cos(PLAYER->a))] == '1')
+				|| (key == 125 && MAP[(int)(PLAYER->y - sin(PLAYER->a))]
+					[(int)(PLAYER->x - cos(PLAYER->a))] == '1'))
+	{
+		PLAYER->x = x;
+		PLAYER->y = y;
+		return (0);
+	}
+	return (1);
+}
+
 void	image_replacer(t_mlx *list)
 {
 	void	*stmp;

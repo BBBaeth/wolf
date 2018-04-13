@@ -51,13 +51,8 @@ int		move_dir(int key, t_mlx *list)
 		PLAYER->x -= cos(PLAYER->a) * 0.2;
 		PLAYER->y -= sin(PLAYER->a) * 0.2;
 	}
-	if (!(MAP[(int)PLAYER->y][(int)PLAYER->x])
-		|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1' || (key == 126 && MAP[(int)(PLAYER->y + sin(PLAYER->a))][(int)(PLAYER->x + cos(PLAYER->a))] == '1') || (key == 125 && MAP[(int)(PLAYER->y - sin(PLAYER->a))][(int)(PLAYER->x - cos(PLAYER->a))] == '1'))
-	{
-		PLAYER->x = x;
-		PLAYER->y = y;
-	}
-	image_replacer(list);
+	if (ft_security(list, x, y, key))
+		image_replacer(list);
 	return (0);
 }
 
