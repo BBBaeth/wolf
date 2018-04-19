@@ -2,26 +2,7 @@
 
 int		window_closed(t_mlx *list)
 {
-	if (list)
-	{
-		free_textures(list);
-		close(FD);
-		if (MAP)
-			free(MAP);
-		if (STAGE)
-			free(STAGE);
-		if (PLAYER)
-			free(PLAYER);
-		if (WIN_PTR)
-		{
-			mlx_clear_window(MLX_PTR, WIN_PTR);
-			mlx_destroy_window(MLX_PTR, WIN_PTR);
-			if (IMG_DATA)
-				free(IMG_DATA);
-		}
-		free(list);
-		list = NULL;
-	}
+	free_them_all(list);
 	exit(0);
 }
 

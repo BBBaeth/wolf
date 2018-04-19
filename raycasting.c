@@ -21,8 +21,10 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 	o.x = get_ox(list, dist, i);
 	if (ROOF < 0)
 		o.y = abs(ROOF) * WALLR;
-	if (dist < 25)
+	if (dist < 35)
 		ft_draw_wall(list, i, x, o);
+	if (list->encountered_items > 0)
+		ft_draw_item(list, x, o);
 }
 
 float			get_ox(t_mlx *list, float dist, int i)
@@ -74,21 +76,27 @@ void			lets_search(int x, t_mlx *list, t_point o)
 	float	dist;
 
 	dist = 0;
-	while (dist < 25)
+	list->encountered_items = 0;
+	while (dist < 35)
 	{
 		distx = (float)(PLAYER->x + PLAYER->eye_x * dist);
 		disty = (float)(PLAYER->y + PLAYER->eye_y * dist);
 		if (distx < 0 || distx > STAGE->map_la || disty < 0
 			|| disty > STAGE->map_ha || !(MAP[disty][distx]))
 		{
-			dist = 25;
+			dist = 35;
 			break;
 		}
-		if (MAP[disty][distx] != ' ')
+		if (MAP[disty][distx] == '1')
 			break;
+		if (MAP[disty][distx] != '1' && MAP[disty][distx] != ' ' && MAP[disty][distx] != 'B')
+		{
+			list->encountered_items++;
+			MAP[disty][distx] = 'B';
+		}
 		dist += 0.01;
 	}
-	if (dist < 25)
+	if (dist < 35)
 		get_dir(distx, disty, dist, list);
 	DIST = dist;
 	lets_persp(x, dist, list, o);

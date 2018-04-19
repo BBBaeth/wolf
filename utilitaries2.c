@@ -30,14 +30,35 @@ int		ft_security(t_mlx *list, float x, float y, int key)
 	return (1);
 }
 
+void	free_them_all(t_mlx *list)
+{
+	if (list)
+	{
+		free_textures(list);
+		close(FD);
+		if (MAP)
+			free(MAP);
+		MAP = NULL;
+		if (STAGE)
+			free(STAGE);
+		STAGE = NULL;
+		if (PLAYER)
+			free(PLAYER);
+		PLAYER = NULL;
+		if (WIN_PTR)
+		{
+			mlx_clear_window(MLX_PTR, WIN_PTR);
+			mlx_destroy_window(MLX_PTR, WIN_PTR);
+			if (IMG_DATA)
+				free(IMG_DATA);
+		}
+		free(list);
+		list = NULL;
+	}
+}
+
 void	image_replacer(t_mlx *list)
 {
-	void	*stmp;
-
-	mlx_destroy_image(MLX_PTR, IMG_PTR);
-	if (!(stmp = mlx_new_image(MLX_PTR, LA, HA)))
-		ft_fail("Error: Unable to generate image.", list);
-	IMG_PTR = stmp;
 	lets_cast(list);
 	mlx_clear_window(MLX_PTR, WIN_PTR);
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMG_PTR, 0, 0);

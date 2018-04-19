@@ -4,18 +4,7 @@ void	ft_fail(char *str, t_mlx *list)
 {
 	ft_putstr_fd(str, 2);
 	ft_putchar('\n');
-	if (list)
-	{
-		close(FD);
-		if (MAP)
-			free(MAP);
-		if (STAGE)
-			free(STAGE);
-		if (PLAYER)
-			free(PLAYER);
-		free(list);
-		list = NULL;
-	}
+	free_them_all(list);
 	ft_putstr_fd("State: ", 2);
 	ft_putstr_fd("Wolf3d is now properly quitting due to an error.\n", 2);
 	exit(0);
