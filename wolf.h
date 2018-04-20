@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 12:26:30 by ceugene           #+#    #+#             */
-/*   Updated: 2018/04/20 15:24:55 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/04/20 15:58:51 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,5 +152,6 @@ void	color_sky_and_floor(int x, t_mlx *list);
 void	ft_draw_wall(t_mlx *list, int i, int x, t_point o);
 void	ft_draw_item(t_mlx *list, int x, t_point o);
 void	free_them_all(t_mlx *list);
+void	get_player_coordinates(t_mlx *list);
 
 #endif

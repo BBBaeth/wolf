@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 15:24:20 by ceugene           #+#    #+#             */
-/*   Updated: 2018/04/20 15:24:28 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/04/20 16:07:01 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void	read_map(t_mlx *list)
 	if (y_size < 2)
 		ft_fail("Error: Map must be made of several lines.", list);
 	map_checking(list);
+	get_player_coordinates(list);
 	if (!(MAP[(int)PLAYER->y][(int)PLAYER->x])
 		|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1')
 		ft_fail("Error: Player spawn is invalid.", list);

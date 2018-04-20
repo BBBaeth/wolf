@@ -6,9 +6,10 @@ SRCS = 	wolf.c			\
 		utilitaries2.c	\
 		colors.c		\
 		raycasting.c	\
-		texture.c			\
+		texture.c		\
 		events.c		\
 		draw.c			\
+		level.c			\
 
 SRCO = $(SRCS:.c=.o)
 

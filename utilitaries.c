@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 15:24:36 by ceugene           #+#    #+#             */
-/*   Updated: 2018/04/20 15:24:38 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/04/20 15:55:02 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ t_player	*new_player(t_mlx *list)
 
 	if (!(new = (t_player *)malloc(sizeof(t_player) * 1)))
 		ft_fail("Error: Could not allocate memory.", list);
-	new->x = 5;
-	new->y = 5;
+	new->x = -1;
+	new->y = -1;
 	new->a = 0;
 	new->eye_x = 0;
 	new->eye_y = 0;
