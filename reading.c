@@ -1,9 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reading.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/20 15:24:20 by ceugene           #+#    #+#             */
+/*   Updated: 2018/04/20 15:24:28 by ceugene          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "wolf.h"
 
 void	map_alloc(t_mlx *list)
 {
 	if (MAP)
+	{
 		free(MAP);
+		MAP = NULL;
+	}
 	if (!(MAP = malloc(sizeof(char *) * 2048)))
 		ft_fail("Error: Couldn't allocate memory.", list);
 }
