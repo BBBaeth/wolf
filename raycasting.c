@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 15:24:16 by ceugene           #+#    #+#             */
-/*   Updated: 2018/04/20 15:24:17 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/04/20 16:47:42 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void			lets_search(int x, t_mlx *list, t_point o)
 		}
 		if (MAP[disty][distx] == '1')
 			break;
-		if (MAP[disty][distx] != '1' && MAP[disty][distx] != ' ' && MAP[disty][distx] != 'B')
+		if (MAP[disty][distx] == '2')
 		{
 			list->encountered_items++;
 			MAP[disty][distx] = 'B';

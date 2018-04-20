@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 15:24:11 by ceugene           #+#    #+#             */
-/*   Updated: 2018/04/20 15:24:12 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/04/20 16:52:20 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int		move_dir(int key, t_mlx *list)
 int		move_side(int key, t_mlx *list)
 {
 	if (key == 123)
-		PLAYER->a -= 0.15 * 0.15;
+		PLAYER->a -= 0.15 * 0.19;
 	else if (key == 124)
-		PLAYER->a += 0.15 * 0.15;
+		PLAYER->a += 0.15 * 0.19;
 	if (PLAYER->a >= 6.30 || PLAYER->a <= -6.30)
 		PLAYER->a = 0;
 	image_replacer(list);
