@@ -2,8 +2,8 @@
 
 void	init_list(t_mlx *list)
 {
-	HA = 600;
-	LA = 1000;
+	HA = 800;
+	LA = 1200;
 	if (!(MLX_PTR = mlx_init()))
 		ft_fail("Error: Connection failed.", list);
 	if (!(WIN_PTR = mlx_new_window(MLX_PTR, LA, HA, "WOLF3D")))
