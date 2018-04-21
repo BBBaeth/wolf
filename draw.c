@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 15:24:05 by ceugene           #+#    #+#             */
-/*   Updated: 2018/04/20 16:44:42 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/04/21 18:34:01 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ void	ft_draw_item(t_mlx *list, int x, t_point o)
 	i = 4;
 	while (list->encountered_items > 0)
 	{
-		o.x = get_ox(list, DIST, i);
 		y = FLOOR * 1.5 - list->t[i]->height;
 		DIST -= 0.01;
 		o.y = 0;
 		distx = (float)(PLAYER->x + PLAYER->eye_x * DIST);
 		disty = (float)(PLAYER->y + PLAYER->eye_y * DIST);
-		if (MAP[disty][distx] != ' ' && MAP[disty][distx] != '1' && MAP[disty][distx] != '2')
+		if (MAP[disty][distx] == 'B')
 		{
-			MAP[disty][distx] = 2;
+			o.x = get_ox(list, DIST, 4);
+			MAP[disty][distx] = '2';
 			while (y < HA)
 			{
 				pos = (x * BPP) + (y * S_L);
@@ -74,9 +74,9 @@ void	ft_draw_item(t_mlx *list, int x, t_point o)
 				{
 					o.y += 1;
 					if (o.y > (float)(list->t[i]->height))
-						break;
+						break ;
 					if (o.x > (float)(list->t[i]->width))
-						break;
+						break ;
 					attribute_text_color_to_image(list, i, pos, o);
 				}
 				y++;
@@ -102,9 +102,9 @@ void	ft_draw_wall(t_mlx *list, int i, int x, t_point o)
 			{
 				o.y += WALLR;
 				if (o.y > (float)(list->t[i]->height))
-						o.y = 0;
+					o.y = 0;
 				attribute_text_color_to_image(list, i, pos, o);
-				IMG_DATA[pos + 3] += (char)(0 + ((int)DIST * 4 % 200));
+				IMG_DATA[pos + 3] += (char)(0 + ((int)DIST * 3 % 250));
 			}
 		}
 		y++;

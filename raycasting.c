@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 15:24:16 by ceugene           #+#    #+#             */
-/*   Updated: 2018/04/20 16:47:42 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/04/21 18:19:55 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 	o.x = get_ox(list, dist, i);
 	if (ROOF < 0)
 		o.y = abs(ROOF) * WALLR;
-	if (dist < 35)
+	if (dist < 45)
 		ft_draw_wall(list, i, x, o);
 	if (list->encountered_items > 0)
 		ft_draw_item(list, x, o);
@@ -63,7 +63,7 @@ void			get_dir(int distx, int disty, float dist, t_mlx *list)
 
 	up = 0;
 	right = 0;
-	dist -= 0.01;
+	dist -= 0.04;
 	dist_x = (int)(PLAYER->x + PLAYER->eye_x * dist);
 	dist_y = (int)(PLAYER->y + PLAYER->eye_y * dist);
 	if (dist_y > disty)
@@ -89,14 +89,14 @@ void			lets_search(int x, t_mlx *list, t_point o)
 
 	dist = 0;
 	list->encountered_items = 0;
-	while (dist < 35)
+	while (dist < 45)
 	{
 		distx = (float)(PLAYER->x + PLAYER->eye_x * dist);
 		disty = (float)(PLAYER->y + PLAYER->eye_y * dist);
 		if (distx < 0 || distx > STAGE->map_la || disty < 0
 			|| disty > STAGE->map_ha || !(MAP[disty][distx]))
 		{
-			dist = 35;
+			dist = 45;
 			break;
 		}
 		if (MAP[disty][distx] == '1')
@@ -106,9 +106,9 @@ void			lets_search(int x, t_mlx *list, t_point o)
 			list->encountered_items++;
 			MAP[disty][distx] = 'B';
 		}
-		dist += 0.01;
+		dist += 0.04;
 	}
-	if (dist < 35)
+	if (dist < 45)
 		get_dir(distx, disty, dist, list);
 	DIST = dist;
 	lets_persp(x, dist, list, o);
