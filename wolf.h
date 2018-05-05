@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 12:26:30 by ceugene           #+#    #+#             */
-/*   Updated: 2018/04/20 15:58:51 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/03/19 15:00:49 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ typedef struct			s_mlx
 	int					floor;
 	int					looking_up;
 	int					right;
-	t_texture			*t[6];
+	t_texture			*t;
 	int					wall_height;
 	float				height_ratio;
 	int					encountered_items;
@@ -140,18 +140,15 @@ void		let_mlx_loop(t_mlx *list);
 void		image_replacer(t_mlx *list);
 void		generate_texture(t_mlx *list);
 void		next_level(t_mlx *list);
-void		generate_texture(t_mlx *list);
-void		free_textures(t_mlx *list);
 void		attribute_text_color_to_image(t_mlx *list, int i, int p, t_point o);
 float		get_ox(t_mlx *list, float dist, int i);
-int		key_pressed(int key, t_mlx *list);
-int		move_dir(int key, t_mlx *list);
-int		move_side(int key, t_mlx *list);
-int		ft_security(t_mlx *list, float x, float y, int key);
-void	color_sky_and_floor(int x, t_mlx *list);
-void	ft_draw_wall(t_mlx *list, int i, int x, t_point o);
-void	ft_draw_item(t_mlx *list, int x, t_point o);
-void	free_them_all(t_mlx *list);
-void	get_player_coordinates(t_mlx *list);
+int			key_pressed(int key, t_mlx *list);
+int			move_dir(int key, t_mlx *list);
+int			move_side(int key, t_mlx *list);
+int			ft_security(t_mlx *list, float x, float y, int key);
+void		color_sky_and_floor(int x, t_mlx *list);
+void		ft_draw_wall(t_mlx *list, int i, int x, t_point o);
+void		ft_draw_item(t_mlx *list, int x, t_point o);
+void		free_them_all(t_mlx *list);
 
 #endif
