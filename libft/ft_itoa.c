@@ -14,10 +14,18 @@
 
 static char		*ft_fill(char *str, int nb, int isneg, int count)
 {
-	if (nb == 2147483647)
-		return (ft_strdup("2147483647"));
 	if (nb == 0)
-		return (ft_strdup("0"));
+	{
+		free(str);
+		str = ft_strdup("0");
+		return (str);
+	}
+	if (nb == 2147483647)
+	{
+		free(str);
+		str = ft_strdup("2147483647");
+		return (str);
+	}
 	if (isneg == 1)
 	{
 		str[0] = '-';
@@ -42,7 +50,7 @@ char			*ft_itoa(int n)
 	isneg = 0;
 	count = 1;
 	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
+		return ("-2147483648");
 	nb = n;
 	if (n < 0)
 	{
@@ -56,7 +64,7 @@ char			*ft_itoa(int n)
 		count++;
 	}
 	if (!(nbr = (char *)malloc(sizeof(char) * count + 1)))
-		return (NULL);
+		return (nbr);
 	nbr[count] = '\0';
 	return (ft_fill(nbr, nb, isneg, count - 1));
 }

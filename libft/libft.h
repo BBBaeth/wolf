@@ -18,7 +18,7 @@
 # include <string.h>
 # include <fcntl.h>
 
-# define BUFF_SIZE 1040
+# define BUFF_SIZE 200
 
 typedef struct		s_list
 {
