@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reading.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/07 11:55:45 by ceugene           #+#    #+#             */
+/*   Updated: 2018/05/07 11:56:19 by ceugene          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "wolf.h"
 
 void	map_alloc(t_mlx *list)
@@ -89,7 +101,7 @@ void	map_checking(t_mlx *list)
 void	read_map(t_mlx *list)
 {
 	int			y_size;
-	int						ret;
+	int			ret;
 
 	y_size = 0;
 	map_alloc(list);
@@ -102,7 +114,7 @@ void	read_map(t_mlx *list)
 	{
 		ft_putstr_fd("Error: ", 2);
 		ft_putstr_fd(STAGE->map_name, 2);
-		ft_fail( " is an empty file.", list);
+		ft_fail(" is an empty file.", list);
 	}
 	if (STAGE->map_name)
 		free(STAGE->map_name);

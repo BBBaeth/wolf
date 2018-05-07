@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/07 11:58:47 by ceugene           #+#    #+#             */
+/*   Updated: 2018/05/07 11:59:56 by ceugene          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "wolf.h"
 
 void			lets_persp(int x, float dist, t_mlx *list, t_point o)
@@ -76,7 +88,6 @@ void			lets_search(int x, t_mlx *list, t_point o)
 	float	dist;
 
 	dist = 0;
-	list->encountered_items = 0;
 	while (dist < 35)
 	{
 		distx = (float)(PLAYER->x + PLAYER->eye_x * dist);
@@ -85,15 +96,10 @@ void			lets_search(int x, t_mlx *list, t_point o)
 			|| disty > STAGE->map_ha || !(MAP[disty][distx]))
 		{
 			dist = 35;
-			break;
+			break ;
 		}
 		if (MAP[disty][distx] == '1')
-			break;
-		if (MAP[disty][distx] != '1' && MAP[disty][distx] != ' ' && MAP[disty][distx] != 'B')
-		{
-			list->encountered_items++;
-			MAP[disty][distx] = 'B';
-		}
+			break ;
 		dist += 0.01;
 	}
 	if (dist < 35)
@@ -113,6 +119,7 @@ void			lets_cast(t_mlx *list)
 	o.x = 0;
 	while (x < LA)
 	{
+		list->encountered_items = 0;
 		ray = (PLAYER->a - FOV / 2.0) + ((float)x / (float)LA * FOV);
 		PLAYER->eye_x = cosf(ray);
 		PLAYER->eye_y = sinf(ray);
