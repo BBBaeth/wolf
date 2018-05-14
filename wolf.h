@@ -153,5 +153,6 @@ int			ft_security(t_mlx *list, float x, float y, int key);
 void		color_sky_and_floor(int x, t_mlx *list);
 void		ft_draw_wall(t_mlx *list, int i, int x, t_point o);
 void		free_them_all(t_mlx *list);
+void		place_player(t_mlx *list);
 
 #endif

@@ -7,6 +7,7 @@ void	map_alloc(t_mlx *list)
 	select = 0;
 	if (MAP)
 	{
+		free(STAGE->map_name);
 		while (MAP[select])
 		{
 			free(MAP[select]);
@@ -104,13 +105,11 @@ void	read_map(t_mlx *list)
 		ft_putstr_fd(STAGE->map_name, 2);
 		ft_fail( " is an empty file.", list);
 	}
-	if (STAGE->map_name)
-		free(STAGE->map_name);
 	if (y_size < 2)
 		ft_fail("Error: Map must be made of several lines.", list);
 	map_checking(list);
-	if (!(MAP[(int)PLAYER->y][(int)PLAYER->x])
-		|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1')
+	place_player(list);
+	if (MAP[(int)PLAYER->y][(int)PLAYER->x] != ' '
+		&& MAP[(int)PLAYER->y][(int)PLAYER->x] != 'P')
 		ft_fail("Error: Player spawn is invalid.", list);
-	close(FD);
 }

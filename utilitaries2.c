@@ -8,6 +8,7 @@ void	reload_pic(t_mlx *list)
 
 void	next_level(t_mlx *list)
 {
+	close(FD);
 	STAGE->map_nb++;
 	read_map(list);
 	lets_cast(list);
@@ -28,6 +29,35 @@ int		ft_security(t_mlx *list, float x, float y, int key)
 		return (0);
 	}
 	return (1);
+}
+
+void	place_player(t_mlx *list)
+{
+	int		select;
+	int		s2;
+
+	select = 0;
+	PLAYER->x = 0;
+	PLAYER->y = 0;
+	while (MAP[select])
+	{
+		s2 = 0;
+		while (MAP[select][s2])
+		{
+			if (MAP[select][s2] == 'P')
+			{
+				if (PLAYER->x == 0 && PLAYER->y == 0)
+				{
+					PLAYER->x = s2;
+					PLAYER->y = select;
+				}
+				else
+					ft_fail("Error: Player spawn is invalid.", list);
+			}
+			s2++;
+		}
+		select++;
+	}
 }
 
 void	free_them_all(t_mlx *list)
