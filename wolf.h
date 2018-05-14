@@ -52,6 +52,7 @@
 # define WALLR list->height_ratio
 # define DIST list->distance
 # define WINDOW_SIZE list->window_size
+# define MAXDIST list->maximal_distance
 
 typedef struct			s_point
 {
@@ -126,6 +127,7 @@ typedef struct			s_mlx
 	float				height_ratio;
 	int					encountered_items;
 	int					window_size;
+	int					maximal_distance;
 }						t_mlx;
 
 void		ft_fail(char *str, t_mlx *list);
@@ -148,7 +150,6 @@ int			move_side(int key, t_mlx *list);
 int			ft_security(t_mlx *list, float x, float y, int key);
 void		color_sky_and_floor(int x, t_mlx *list);
 void		ft_draw_wall(t_mlx *list, int i, int x, t_point o);
-void		ft_draw_item(t_mlx *list, int x, t_point o);
 void		free_them_all(t_mlx *list);
 
 #endif

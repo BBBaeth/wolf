@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   wolf.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/07 11:58:36 by ceugene           #+#    #+#             */
-/*   Updated: 2018/05/07 11:58:37 by ceugene          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "wolf.h"
 
 void	init_list(t_mlx *list)
@@ -27,6 +15,7 @@ void	init_list(t_mlx *list)
 	BPP = BPP / 8;
 	STAGE = new_stage(list);
 	STAGE->map_nb = 0;
+	MAXDIST = 35;
 	PLAYER = new_player(list);
 	FOV = 0.5231;
 	generate_texture(list);

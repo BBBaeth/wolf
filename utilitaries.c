@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utilitaries.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/07 11:56:34 by ceugene           #+#    #+#             */
-/*   Updated: 2018/05/07 11:57:52 by ceugene          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "wolf.h"
 
-void			ft_fail(char *str, t_mlx *list)
+void	ft_fail(char *str, t_mlx *list)
 {
 	ft_putstr_fd(str, 2);
 	ft_putchar('\n');
@@ -22,7 +10,7 @@ void			ft_fail(char *str, t_mlx *list)
 	exit(0);
 }
 
-void			let_mlx_loop(t_mlx *list)
+void	let_mlx_loop(t_mlx *list)
 {
 	mlx_key_hook(WIN_PTR, &key_manager, list);
 	mlx_hook(WIN_PTR, 17, 1L << 17, &window_closed, list);
@@ -30,9 +18,9 @@ void			let_mlx_loop(t_mlx *list)
 	mlx_loop(MLX_PTR);
 }
 
-t_mlx			*new_list(void)
+t_mlx	*new_list(void)
 {
-	t_mlx		*new;
+	t_mlx	*new;
 
 	if (!(new = (t_mlx *)malloc(sizeof(t_mlx) * 1)))
 		ft_fail("Error: Could not allocate memory.", NULL);
@@ -40,7 +28,7 @@ t_mlx			*new_list(void)
 	return (new);
 }
 
-t_level			*new_stage(t_mlx *list)
+t_level		*new_stage(t_mlx *list)
 {
 	t_level		*new;
 
@@ -52,7 +40,7 @@ t_level			*new_stage(t_mlx *list)
 	return (new);
 }
 
-t_player		*new_player(t_mlx *list)
+t_player	*new_player(t_mlx *list)
 {
 	t_player	*new;
 

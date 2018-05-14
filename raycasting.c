@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/07 11:58:47 by ceugene           #+#    #+#             */
-/*   Updated: 2018/05/07 11:59:56 by ceugene          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "wolf.h"
 
 void			lets_persp(int x, float dist, t_mlx *list, t_point o)
@@ -33,10 +21,8 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 	o.x = get_ox(list, dist, i);
 	if (ROOF < 0)
 		o.y = abs(ROOF) * WALLR;
-	if (dist < 35)
+	if (dist < MAXDIST)
 		ft_draw_wall(list, i, x, o);
-	if (list->encountered_items > 0)
-		ft_draw_item(list, x, o);
 }
 
 float			get_ox(t_mlx *list, float dist, int i)
@@ -88,21 +74,21 @@ void			lets_search(int x, t_mlx *list, t_point o)
 	float	dist;
 
 	dist = 0;
-	while (dist < 35)
+	while (dist < MAXDIST)
 	{
 		distx = (float)(PLAYER->x + PLAYER->eye_x * dist);
 		disty = (float)(PLAYER->y + PLAYER->eye_y * dist);
 		if (distx < 0 || distx > STAGE->map_la || disty < 0
 			|| disty > STAGE->map_ha || !(MAP[disty][distx]))
 		{
-			dist = 35;
-			break ;
+			dist = MAXDIST;
+			break;
 		}
 		if (MAP[disty][distx] == '1')
-			break ;
+			break;
 		dist += 0.01;
 	}
-	if (dist < 35)
+	if (dist < MAXDIST)
 		get_dir(distx, disty, dist, list);
 	DIST = dist;
 	lets_persp(x, dist, list, o);
@@ -119,7 +105,6 @@ void			lets_cast(t_mlx *list)
 	o.x = 0;
 	while (x < LA)
 	{
-		list->encountered_items = 0;
 		ray = (PLAYER->a - FOV / 2.0) + ((float)x / (float)LA * FOV);
 		PLAYER->eye_x = cosf(ray);
 		PLAYER->eye_y = sinf(ray);
