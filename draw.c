@@ -30,7 +30,7 @@ void	color_sky_and_floor(int x, t_mlx *list)
 					IMG_DATA[pos + 0] = (char)280 - color_floor / 4;
 					IMG_DATA[pos + 1] = (char)100;
 					IMG_DATA[pos + 2] = (char)160;
-					IMG_DATA[pos + 3] = (char)(340 - color_floor / 3);
+					IMG_DATA[pos + 3] = (char)(360 - color_floor / 3);
 				}
 		}
 	}

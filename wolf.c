@@ -16,6 +16,7 @@ void	init_list(t_mlx *list)
 	STAGE = new_stage(list);
 	STAGE->map_nb = 0;
 	MAXDIST = 35;
+	STEP = 0.02;
 	PLAYER = new_player(list);
 	FOV = 0.5231;
 	generate_texture(list);

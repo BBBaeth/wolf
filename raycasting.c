@@ -49,7 +49,7 @@ void			get_dir(int distx, int disty, float dist, t_mlx *list)
 
 	up = 0;
 	right = 0;
-	dist -= 0.01;
+	dist -= STEP;
 	dist_x = (int)(PLAYER->x + PLAYER->eye_x * dist);
 	dist_y = (int)(PLAYER->y + PLAYER->eye_y * dist);
 	if (dist_y > disty)
@@ -86,7 +86,7 @@ void			lets_search(int x, t_mlx *list, t_point o)
 		}
 		if (MAP[disty][distx] == '1')
 			break;
-		dist += 0.01;
+		dist += STEP;
 	}
 	if (dist < MAXDIST)
 		get_dir(distx, disty, dist, list);
