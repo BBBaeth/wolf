@@ -8,15 +8,15 @@ void	map_alloc(t_mlx *list)
 	if (MAP)
 	{
 		free(STAGE->map_name);
-		while (MAP[select])
+		while (select <= STAGE->map_ha + 1)
 		{
 			free(MAP[select]);
 			MAP[select] = NULL;
 			select++;
 		}
 		free(MAP);
+		MAP = NULL;
 	}
-	select = 0;
 	if (!(MAP = (char **)malloc(sizeof(char*) * 2048)))
 		ft_fail("Error: Couldn't allocate memory.", list);
 }
@@ -26,6 +26,7 @@ void	name_gen(t_mlx *list)
 	char	*str;
 	char	*str2;
 
+	STAGE->map_name = NULL;
 	if (!(str = (char *)malloc(sizeof(char) * 12)))
 		ft_fail("Error: Couldn't allocate memory.", list);
 	ft_strcpy(str, "./maps/map");
@@ -90,11 +91,14 @@ void	map_checking(t_mlx *list)
 void	read_map(t_mlx *list)
 {
 	int			y_size;
-	int						ret;
+	int			ret;
 
 	y_size = 0;
+	ft_putstr("not yet malloced || ");
 	map_alloc(list);
+	ft_putstr("not yet named || ");
 	name_gen(list);
+	ft_putstr("malloced and named ||\n");
 	while ((ret = get_next_line(FD, &MAP[y_size])) > 0 && y_size < 2048)
 		y_size++;
 	if (y_size == 2048 || ret == -1)
@@ -109,7 +113,9 @@ void	read_map(t_mlx *list)
 		ft_fail("Error: Map must be made of several lines.", list);
 	map_checking(list);
 	place_player(list);
-	if (MAP[(int)PLAYER->y][(int)PLAYER->x] != ' '
-		&& MAP[(int)PLAYER->y][(int)PLAYER->x] != 'P')
+	PLAYER->x += cos(PLAYER->a) * 0.1;
+	PLAYER->y += sin(PLAYER->a) * 0.1;
+	if (PLAYER->y < 1 || PLAYER->x <= 1
+			|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1')
 		ft_fail("Error: Player spawn is invalid.", list);
 }

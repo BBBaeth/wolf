@@ -39,7 +39,7 @@ void	place_player(t_mlx *list)
 	select = 0;
 	PLAYER->x = 0;
 	PLAYER->y = 0;
-	while (MAP[select])
+	while (MAP[select][0])
 	{
 		s2 = 0;
 		while (MAP[select][s2])
@@ -52,7 +52,7 @@ void	place_player(t_mlx *list)
 					PLAYER->y = select;
 				}
 				else
-					ft_fail("Error: Player spawn is invalid.", list);
+					ft_fail("Error: Several spawns detected.", list);
 			}
 			s2++;
 		}
