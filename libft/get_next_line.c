@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 12:19:58 by ceugene           #+#    #+#             */
-/*   Updated: 2018/03/12 12:38:14 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/05/18 13:59:51 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		get_next_line(const int fd, char **line)
 	int				ret;
 
 	if ((fd != 0 && fd < 3) || BUFF_SIZE < 1 || !&(*line) ||
-	 !(*line = ft_strnew(BUFF_SIZE)))
+	!(*line = ft_strnew(BUFF_SIZE)))
 		return (-1);
 	while ((lu = ft_strnew(BUFF_SIZE))
 		&& (ret = read(fd, lu, BUFF_SIZE)) > 0)
