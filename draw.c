@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 13:45:35 by ceugene           #+#    #+#             */
-/*   Updated: 2018/05/18 14:05:04 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/05/18 14:45:24 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	color_the_floor(int x, t_mlx *list, int color_floor)
 {
-	int		pos;
+	int			pos;
 
 	while (++color_floor < HA)
 	{
@@ -28,7 +28,6 @@ void	color_the_floor(int x, t_mlx *list, int color_floor)
 			}
 	}
 }
-
 
 void	color_sky_and_floor(int x, t_mlx *list)
 {

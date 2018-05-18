@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 13:50:05 by ceugene           #+#    #+#             */
-/*   Updated: 2018/05/18 13:50:06 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/05/18 14:30:06 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	next_level(t_mlx *list)
 {
 	close(FD);
+	PLAYER->a = 0;
 	STAGE->map_nb++;
 	read_map(list);
 	lets_cast(list);
