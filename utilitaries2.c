@@ -1,10 +1,16 @@
-#include "wolf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utilitaries2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/18 13:50:05 by ceugene           #+#    #+#             */
+/*   Updated: 2018/05/18 13:50:06 by ceugene          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	reload_pic(t_mlx *list)
-{
-	mlx_clear_window(MLX_PTR, WIN_PTR);
-	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMG_PTR, 0, 0);
-}
+#include "wolf.h"
 
 void	next_level(t_mlx *list)
 {

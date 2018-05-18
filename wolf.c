@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wolf.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/18 13:50:11 by ceugene           #+#    #+#             */
+/*   Updated: 2018/05/18 13:50:12 by ceugene          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "wolf.h"
 
 void	init_list(t_mlx *list)
@@ -20,6 +32,12 @@ void	init_list(t_mlx *list)
 	PLAYER = new_player(list);
 	FOV = 0.5231;
 	generate_texture(list);
+}
+
+void	reload_pic(t_mlx *list)
+{
+	mlx_clear_window(MLX_PTR, WIN_PTR);
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMG_PTR, 0, 0);
 }
 
 int		main(int argc, char **argv)

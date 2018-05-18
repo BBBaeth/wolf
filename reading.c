@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reading.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/18 13:46:58 by ceugene           #+#    #+#             */
+/*   Updated: 2018/05/18 13:48:07 by ceugene          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "wolf.h"
 
 void	map_alloc(t_mlx *list)
@@ -94,11 +106,8 @@ void	read_map(t_mlx *list)
 	int			ret;
 
 	y_size = 0;
-	ft_putstr("not yet malloced || ");
 	map_alloc(list);
-	ft_putstr("not yet named || ");
 	name_gen(list);
-	ft_putstr("malloced and named ||\n");
 	while ((ret = get_next_line(FD, &MAP[y_size])) > 0 && y_size < 2048)
 		y_size++;
 	if (y_size == 2048 || ret == -1)
@@ -107,7 +116,7 @@ void	read_map(t_mlx *list)
 	{
 		ft_putstr_fd("Error: ", 2);
 		ft_putstr_fd(STAGE->map_name, 2);
-		ft_fail( " is an empty file.", list);
+		ft_fail(" is an empty file.", list);
 	}
 	if (y_size < 2)
 		ft_fail("Error: Map must be made of several lines.", list);

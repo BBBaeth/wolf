@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/18 13:46:06 by ceugene           #+#    #+#             */
+/*   Updated: 2018/05/18 13:46:22 by ceugene          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "wolf.h"
 
 void			lets_persp(int x, float dist, t_mlx *list, t_point o)
@@ -82,10 +94,10 @@ void			lets_search(int x, t_mlx *list, t_point o)
 			|| disty > STAGE->map_ha || !(MAP[disty][distx]))
 		{
 			dist = MAXDIST;
-			break;
+			break ;
 		}
 		if (MAP[disty][distx] == '1')
-			break;
+			break ;
 		dist += STEP;
 	}
 	if (dist < MAXDIST)

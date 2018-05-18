@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/18 13:48:12 by ceugene           #+#    #+#             */
+/*   Updated: 2018/05/18 13:48:13 by ceugene          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "wolf.h"
 
-t_texture	xpm_texture(char *name, t_mlx *list)
+t_texture			xpm_texture(char *name, t_mlx *list)
 {
 	t_texture		text;
 
@@ -14,7 +26,7 @@ t_texture	xpm_texture(char *name, t_mlx *list)
 	return (text);
 }
 
-void	generate_texture(t_mlx *list)
+void				generate_texture(t_mlx *list)
 {
 	if (!((list->t) = malloc(sizeof(t_texture) * 6)))
 		ft_fail("Error: Unable to allocate memory.", list);
