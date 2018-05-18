@@ -6,11 +6,29 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 13:45:35 by ceugene           #+#    #+#             */
-/*   Updated: 2018/05/18 13:45:38 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/05/18 14:05:04 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
+
+void	color_the_floor(int x, t_mlx *list, int color_floor)
+{
+	int		pos;
+
+	while (++color_floor < HA)
+	{
+		pos = (x * BPP) + (color_floor * S_L);
+		if (x < LA && color_floor < HA && x >= 0 && color_floor >= 0)
+			{
+				IMG_DATA[pos + 0] = (char)280 - color_floor / 4;
+				IMG_DATA[pos + 1] = (char)100;
+				IMG_DATA[pos + 2] = (char)160;
+				IMG_DATA[pos + 3] = (char)(360 - color_floor / 3);
+			}
+	}
+}
+
 
 void	color_sky_and_floor(int x, t_mlx *list)
 {
@@ -33,17 +51,7 @@ void	color_sky_and_floor(int x, t_mlx *list)
 					IMG_DATA[pos + 3] = (char)((0 + color_sky / 2) % 255);
 				}
 		}
-		while (++color_floor < HA)
-		{
-			pos = (x * BPP) + (color_floor * S_L);
-			if (x < LA && color_floor < HA && x >= 0 && color_floor >= 0)
-				{
-					IMG_DATA[pos + 0] = (char)280 - color_floor / 4;
-					IMG_DATA[pos + 1] = (char)100;
-					IMG_DATA[pos + 2] = (char)160;
-					IMG_DATA[pos + 3] = (char)(360 - color_floor / 3);
-				}
-		}
+		color_the_floor(x, list, color_floor);
 	}
 }
 

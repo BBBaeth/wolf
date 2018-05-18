@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 13:46:58 by ceugene           #+#    #+#             */
-/*   Updated: 2018/05/18 13:57:20 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/05/18 14:06:01 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	read_map(t_mlx *list)
 	map_checking(list);
 	place_player(list);
 	PLAYER->x += cos(PLAYER->a) * 0.2;
-	PLAYER->y += 0.2;
+	PLAYER->y += 0.1;
 	PLAYER->y += sin(PLAYER->a) * 0.2;
 	if (PLAYER->y < 1 || PLAYER->x <= 1
 			|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1')
