@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 13:48:12 by ceugene           #+#    #+#             */
-/*   Updated: 2018/05/18 13:48:13 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/05/18 13:54:28 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void				generate_texture(t_mlx *list)
 	list->t[2] = xpm_texture("./tex/wall3.xpm", list);
 	list->t[3] = xpm_texture("./tex/wall4.xpm", list);
 	list->t[4] = xpm_texture("./tex/barrel.xpm", list);
+	list->t[5] = xpm_texture("./tex/floor.xpm", list);
 }
