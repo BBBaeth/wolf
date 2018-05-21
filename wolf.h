@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 12:26:30 by ceugene           #+#    #+#             */
-/*   Updated: 2018/05/18 14:36:44 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/05/21 16:33:03 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@
 
 typedef struct			s_point
 {
-	float	x;
-	float	y;
+	float		x;
+	float		y;
 }						t_point;
 
 typedef struct			s_texture
