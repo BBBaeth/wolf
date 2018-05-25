@@ -24,7 +24,7 @@ void	texture_the_floor(int x, t_mlx *list, int color_floor)
 	t_point		o;
 
 	h_floor_step = DIST / (HA - FLOOR);
-	distance_saved = DIST - STEP;
+	distance_saved = DIST;
 	while (++color_floor < HA)
 	{
 		pos = (x * BPP) + (color_floor * S_L);
@@ -49,7 +49,7 @@ void	color_the_floor(int x, t_mlx *list, int color_floor)
 		pos = (x * BPP) + (color_floor * S_L);
 		if (x < LA && color_floor < HA && x >= 0 && color_floor >= 0)
 			{
-//				IMG_DATA[pos + 0] = (char)280 - color_floor / 4;
+				IMG_DATA[pos + 0] %= (char)280 - color_floor / 4;
 //				IMG_DATA[pos + 1] = (char)100;
 //				IMG_DATA[pos + 2] = (char)160;
 				IMG_DATA[pos + 3] = (char)(360 - color_floor / 3);

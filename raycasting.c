@@ -81,9 +81,9 @@ void			get_dir(int distx, int disty, float dist, t_mlx *list)
 
 void			lets_search(int x, t_mlx *list, t_point o)
 {
-	int		distx;
-	int		disty;
-	float	dist;
+	int			distx;
+	int			disty;
+	float		dist;
 
 	dist = 0;
 	while (dist < MAXDIST)
@@ -102,14 +102,14 @@ void			lets_search(int x, t_mlx *list, t_point o)
 	}
 	if (dist < MAXDIST)
 		get_dir(distx, disty, dist, list);
-	DIST = dist;
+	DIST = (sqrt(pow(distx - PLAYER->x, 2) + pow((disty - PLAYER->y), 2)))
+		* cos(RAY * (M_PI / 180));
 	lets_persp(x, dist, list, o);
 }
 
 void			lets_cast(t_mlx *list)
 {
 	int			x;
-	float		ray;
 	t_point		o;
 
 	x = 0;
@@ -117,9 +117,9 @@ void			lets_cast(t_mlx *list)
 	o.x = 0;
 	while (x < LA)
 	{
-		ray = (PLAYER->a - FOV / 2.0) + ((float)x / (float)LA * FOV);
-		PLAYER->eye_x = cosf(ray);
-		PLAYER->eye_y = sinf(ray);
+		RAY = (PLAYER->a - FOV / 2.0) + atan((float)x / (float)LA * FOV);
+		PLAYER->eye_x = cosf(RAY);
+		PLAYER->eye_y = sinf(RAY);
 		lets_search(x, list, o);
 		x++;
 	}

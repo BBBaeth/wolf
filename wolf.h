@@ -54,6 +54,7 @@
 # define WINDOW_SIZE list->window_size
 # define MAXDIST list->maximal_distance
 # define STEP list->step_size
+# define RAY list->rayon
 
 typedef struct			s_point
 {
@@ -130,6 +131,7 @@ typedef struct			s_mlx
 	int					window_size;
 	int					maximal_distance;
 	float				step_size;
+	double				rayon;
 }						t_mlx;
 
 void		ft_fail(char *str, t_mlx *list);
