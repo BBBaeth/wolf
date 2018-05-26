@@ -6,7 +6,7 @@
 /*   By: ceugene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 12:26:30 by ceugene           #+#    #+#             */
-/*   Updated: 2018/05/21 16:33:03 by ceugene          ###   ########.fr       */
+/*   Updated: 2018/05/26 14:37:12 by ceugene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # define MAXDIST list->maximal_distance
 # define STEP list->step_size
 # define RAY list->rayon
+# define SPEED list->speed
 
 typedef struct			s_point
 {
@@ -132,6 +133,7 @@ typedef struct			s_mlx
 	int					maximal_distance;
 	float				step_size;
 	double				rayon;
+	float				speed;
 }						t_mlx;
 
 void		ft_fail(char *str, t_mlx *list);
