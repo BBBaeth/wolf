@@ -134,6 +134,9 @@ typedef struct			s_mlx
 	float				step_size;
 	double				rayon;
 	float				speed;
+	int					minimap_h;
+	int					minimap_l;
+	int					**minimap;
 }						t_mlx;
 
 void		ft_fail(char *str, t_mlx *list);
@@ -158,5 +161,8 @@ void		color_sky_and_floor(int x, t_mlx *list);
 void		ft_draw_wall(t_mlx *list, int i, int x, t_point o);
 void		free_them_all(t_mlx *list);
 void		place_player(t_mlx *list);
+void		draw_square(t_mlx *list);
+void		minimap_table(t_mlx *list);
+void		color_squares(t_mlx *list, int startx, int starty, int wall);
 
 #endif

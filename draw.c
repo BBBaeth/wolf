@@ -43,7 +43,6 @@ void	color_the_floor(int x, t_mlx *list, int color_floor)
 {
 	int			pos;
 
-//	texture_the_floor(x, list, color_floor);
 	while (++color_floor < HA)
 	{
 		pos = (x * BPP) + (color_floor * S_L);

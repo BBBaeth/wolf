@@ -122,4 +122,5 @@ void			lets_cast(t_mlx *list)
 		lets_search(x, list, o);
 		x++;
 	}
+	draw_square(list);
 }

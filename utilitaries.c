@@ -37,6 +37,7 @@ t_mlx			*new_list(void)
 	if (!(new = (t_mlx *)malloc(sizeof(t_mlx) * 1)))
 		ft_fail("Error: Could not allocate memory.", NULL);
 	new->map = NULL;
+	new->minimap = NULL;
 	return (new);
 }
 

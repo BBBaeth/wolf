@@ -26,8 +26,8 @@ int		ft_security(t_mlx *list, float x, float y, int key)
 {
 	if (!(MAP[(int)PLAYER->y][(int)PLAYER->x])
 		|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1'
-				|| (key == 126 && MAP[(int)(PLAYER->y + sin(PLAYER->a))]
-					[(int)(PLAYER->x + cos(PLAYER->a))] == '1')
+				|| (key == 126 && MAP[(int)(PLAYER->y + sin(PLAYER->a) * 0.4)]
+					[(int)(PLAYER->x + cos(PLAYER->a) * 0.4)] == '1')
 					|| (key == 125 && MAP[(int)(PLAYER->y - sin(PLAYER->a))]
 						[(int)(PLAYER->x - cos(PLAYER->a))] == '1'))
 	{
@@ -72,24 +72,11 @@ void	free_them_all(t_mlx *list)
 	if (list)
 	{
 		close(FD);
-		if (MAP)
-			free(MAP);
-		MAP = NULL;
-		if (STAGE)
-			free(STAGE);
-		STAGE = NULL;
-		if (PLAYER)
-			free(PLAYER);
-		PLAYER = NULL;
 		if (WIN_PTR)
 		{
 			mlx_clear_window(MLX_PTR, WIN_PTR);
 			mlx_destroy_window(MLX_PTR, WIN_PTR);
-			if (IMG_DATA)
-				free(IMG_DATA);
 		}
-		free(list);
-		list = NULL;
 	}
 }
 

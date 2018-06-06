@@ -26,3 +26,33 @@ void	attribute_text_color_to_image(t_mlx *list, int i, int pos, t_point o)
 		IMG_DATA[pos + 3] = (char)(0 + ((int)DIST * 2 % 200) % 255);
 	}
 }
+
+void	color_squares(t_mlx *list, int startx, int starty, int wall)
+{
+	int		count;
+	int		select;
+	int		pos;
+	int		clr;
+
+	clr = 130;
+	if (wall == 1)
+		clr = 70;
+	if (wall == 2)
+		clr = 200;
+	count = starty;
+	while (count <= starty + 10)
+	{
+		select = startx;
+		while (select <= startx + 10)
+		{
+			pos = (select * BPP) + (count * S_L);
+			IMG_DATA[pos + 0] = clr;
+			IMG_DATA[pos + 1] = clr;
+			IMG_DATA[pos + 2] = clr;
+			if (wall == 3)
+			IMG_DATA[pos + 2] = (char)(200);
+			select++;
+		}
+		count++;
+	}
+}
