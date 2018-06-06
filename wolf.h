@@ -56,6 +56,8 @@
 # define STEP list->step_size
 # define RAY list->rayon
 # define SPEED list->speed
+# define SQ_NB list->square_nb
+# define SQ_S list->square_size
 
 typedef struct			s_point
 {
@@ -137,6 +139,8 @@ typedef struct			s_mlx
 	int					minimap_h;
 	int					minimap_l;
 	int					**minimap;
+	int					square_nb;
+	int					square_size;
 }						t_mlx;
 
 void		ft_fail(char *str, t_mlx *list);

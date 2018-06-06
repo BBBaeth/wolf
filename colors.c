@@ -40,10 +40,10 @@ void	color_squares(t_mlx *list, int startx, int starty, int wall)
 	if (wall == 2)
 		clr = 200;
 	count = starty;
-	while (count <= starty + 10)
+	while (count <= starty + SQ_S)
 	{
-		select = startx;
-		while (select <= startx + 10)
+		select = startx - 1;
+		while (++select <= startx + SQ_S)
 		{
 			pos = (select * BPP) + (count * S_L);
 			IMG_DATA[pos + 0] = clr;
@@ -51,7 +51,6 @@ void	color_squares(t_mlx *list, int startx, int starty, int wall)
 			IMG_DATA[pos + 2] = clr;
 			if (wall == 3)
 			IMG_DATA[pos + 2] = (char)(200);
-			select++;
 		}
 		count++;
 	}

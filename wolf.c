@@ -32,9 +32,11 @@ void	init_list(t_mlx *list)
 	PLAYER = new_player(list);
 	FOV = 0.5231;
 	SPEED = 0.2;
-	list->minimap_h = 105;
-	list->minimap_l = 105;
+	list->minimap_h = 100;
+	list->minimap_l = 100;
 	generate_texture(list);
+	SQ_NB = 20;
+	SQ_S = 5;
 	minimap_table(list);
 }
 
