@@ -96,6 +96,8 @@ void			lets_search(int x, t_mlx *list, t_point o)
 			dist = MAXDIST;
 			break ;
 		}
+		if (MAP[(int)PLAYER->y][(int)PLAYER->x] == '1')
+			break ;
 		if (MAP[disty][distx] == '1')
 			break ;
 		dist += STEP;
