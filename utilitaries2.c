@@ -37,9 +37,9 @@ int		ft_security(t_mlx *list, float x, float y, int key)
 		return (0);
 	}
 	if (key == 126 && 
-		(MAP[(int)(PLAYER->y + sin(PLAYER->a) * 0.3)][(int)(PLAYER->x)]
+		(MAP[(int)(PLAYER->y + sin(PLAYER->a) * 0.4)][(int)(PLAYER->x)]
 			== '1'
-				|| MAP[(int)PLAYER->y][(int)(PLAYER->x + cos(PLAYER->a) * 0.3)]
+				|| MAP[(int)PLAYER->y][(int)(PLAYER->x + cos(PLAYER->a) * 0.4)]
 					== '1'))
 	{
 		PLAYER->x = x;

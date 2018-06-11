@@ -27,8 +27,8 @@ void	init_list(t_mlx *list)
 	BPP = BPP / 8;
 	STAGE = new_stage(list);
 	STAGE->map_nb = 0;
-	MAXDIST = 35;
-	STEP = 0.01;
+	MAXDIST = 29;
+	STEP = 0.02;
 	PLAYER = new_player(list);
 	FOV = 0.5231;
 	SPEED = 0.2;

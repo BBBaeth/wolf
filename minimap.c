@@ -23,7 +23,7 @@ void		color_minimap(t_mlx *list, int **tab)
 		select = 0;
 		while (select < SQ_NB)
 		{
-			color_squares(list, SQ_S * select, SQ_S * count, tab[count][select]);
+			color_squares(list, SQ_S * select + 2, SQ_S * count + 2, tab[count][select]);
 			select++;
 		}
 		count++;

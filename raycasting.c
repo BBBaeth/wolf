@@ -85,19 +85,19 @@ void			lets_search(int x, t_mlx *list, t_point o)
 	int			disty;
 	float		dist;
 
-	dist = 0;
+	dist = STEP;
 	while (dist < MAXDIST)
 	{
 		distx = (float)(PLAYER->x + PLAYER->eye_x * dist);
 		disty = (float)(PLAYER->y + PLAYER->eye_y * dist);
+		if (MAP[(int)PLAYER->y][(int)PLAYER->x] == '1')
+			break ;
 		if (distx < 0 || distx > STAGE->map_la || disty < 0
 			|| disty > STAGE->map_ha || !(MAP[disty][distx]))
 		{
 			dist = MAXDIST;
 			break ;
 		}
-		if (MAP[(int)PLAYER->y][(int)PLAYER->x] == '1')
-			break ;
 		if (MAP[disty][distx] == '1')
 			break ;
 		dist += STEP;
