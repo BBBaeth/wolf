@@ -14,33 +14,40 @@
 
 void	next_level(t_mlx *list)
 {
-	close(FD);
-	PLAYER->a = 0;
-	STAGE->map_nb++;
-	read_map(list);
-	lets_cast(list);
-	image_replacer(list);
+	if (IN_MENU == 0)
+	{
+		close(FD);
+		PLAYER->a = 0;
+		STAGE->map_nb++;
+		read_map(list);
+		lets_cast(list);
+		image_replacer(list);
+	}
 }
 
 int		ft_security(t_mlx *list, float x, float y, int key)
 {
 	if (!(MAP[(int)PLAYER->y][(int)PLAYER->x])
 		|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1'
-				|| (key == 126 && MAP[(int)(PLAYER->y + sin(PLAYER->a) * 0.2)]
-					[(int)(PLAYER->x + cos(PLAYER->a) * 0.2)] == '1')
+				|| (key == 126 && MAP[(int)(PLAYER->y + sin(PLAYER->a) * 0.3)]
+					[(int)(PLAYER->x + cos(PLAYER->a) * 0.3)] == '1')
 					|| (key == 125 &&
-						MAP[(int)(PLAYER->y - sin(PLAYER->a) * 0.2)]
-							[(int)(PLAYER->x - cos(PLAYER->a) * 0.2)] == '1'))
+						MAP[(int)(PLAYER->y - sin(PLAYER->a) * 0.3)]
+							[(int)(PLAYER->x - cos(PLAYER->a) * 0.3)] == '1'))
 	{
 		PLAYER->x = x;
 		PLAYER->y = y;
 		return (0);
 	}
-	if (key == 126 && 
-		(MAP[(int)(PLAYER->y + sin(PLAYER->a) * 0.4)][(int)(PLAYER->x)]
+	if ((key == 126 && 
+		((MAP[(int)(PLAYER->y + sin(PLAYER->a) * 0.3)][(int)(PLAYER->x)]
 			== '1'
-				|| MAP[(int)PLAYER->y][(int)(PLAYER->x + cos(PLAYER->a) * 0.4)]
+				||( MAP[(int)PLAYER->y][(int)(PLAYER->x + cos(PLAYER->a) * 0.3)]
 					== '1'))
+					|| (MAP[(int)PLAYER->y][(int)(PLAYER->x - cos(PLAYER->a) * 0.3)]
+						== '1')
+					|| (MAP[(int)(PLAYER->y - sin(PLAYER->a) * 0.3)][(int)(PLAYER->x)]
+						== '1'))))
 	{
 		PLAYER->x = x;
 		PLAYER->y = y;
@@ -93,7 +100,12 @@ void	free_them_all(t_mlx *list)
 
 void	image_replacer(t_mlx *list)
 {
-	lets_cast(list);
 	mlx_clear_window(MLX_PTR, WIN_PTR);
+	if (IN_MENU == 0)
+		lets_cast(list);
+	else if (IN_MENU == 1)
+		lets_draw_menu(list);
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMG_PTR, 0, 0);
+	if (IN_MENU == 1)
+		lets_write(list);
 }

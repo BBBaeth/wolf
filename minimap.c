@@ -23,7 +23,8 @@ void		color_minimap(t_mlx *list, int **tab)
 		select = 0;
 		while (select < SQ_NB)
 		{
-			color_squares(list, SQ_S * select + 2, SQ_S * count + 2, tab[count][select]);
+			color_squares(list, SQ_S * select + 2, SQ_S * count 
+			+ 2, tab[count][select]);
 			select++;
 		}
 		count++;
@@ -37,14 +38,13 @@ void		fill_tab(t_mlx *list, int **tab)
 	int		count;
 	int		select;
 
-	count = 0;
-	select = 0;
-	posy = floor(PLAYER->y) - 9;
-	while (count < SQ_NB)
+	count = -1;
+	posy = (int)(PLAYER->y) - 9;
+	while (++count < SQ_NB)
 	{
-		select = 0;
-		posx = floor(PLAYER->x) - 9;
-		while (select < SQ_NB)
+		select = -1;
+		posx = (int)(PLAYER->x) - 9;
+		while (++select < SQ_NB)
 		{
 			if (posy < 0 || posy > STAGE->map_ha || posx < 0 || posx > STAGE->map_la)
 				tab[count][select] = 2;
@@ -54,10 +54,8 @@ void		fill_tab(t_mlx *list, int **tab)
 				tab[count][select] = 3;
 			else
 				tab[count][select] = 0;
-			select++;
 			posx++;
 		}
-		count++;
 		posy++;
 	}
 	color_minimap(list, tab);

@@ -16,9 +16,9 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 {
 	int			i;
 
-	ROOF = (float)HA / 2 - LA / (float)dist;
+	ROOF = ((float)HA / 2 - LA / (float)dist);
 	FLOOR = HA  - ROOF;
-	WALLH = (float)FLOOR - (float)ROOF;
+	WALLH = ((float)FLOOR - (float)ROOF);
 	o.y = 0;
 	color_sky_and_floor(x, list);
 	if (UP == 1)
@@ -29,26 +29,26 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 		i = 2;
 	else
 		i = 3;
-	WALLR = (float)(list->t[i].height) / WALLH;
-	o.x = get_ox(list, dist, i);
-	if (ROOF < 0)
-		o.y = abs(ROOF) * WALLR;
 	if (dist < MAXDIST)
+	{
+		WALLR = (float)(list->t[i].height) / WALLH;
+		o.x = get_ox(list, dist, i);
+		if (ROOF < 0)
+			o.y = abs(ROOF) * WALLR;
 		ft_draw_wall(list, i, x, o);
+	}
 }
 
 float			get_ox(t_mlx *list, float dist, int i)
 {
 	float		collision_point;
-	int			strict_value;
 
 	collision_point = 0;
 	if (UP != 0)
 		collision_point = (float)(PLAYER->x + PLAYER->eye_x * dist);
 	else if (RIGHT != 0)
 		collision_point = (float)(PLAYER->y + PLAYER->eye_y * dist);
-	strict_value = floor(collision_point);
-	collision_point -= strict_value;
+	collision_point -= floor(collision_point);
 	return (collision_point * list->t[i].width);
 }
 
@@ -85,13 +85,11 @@ void			lets_search(int x, t_mlx *list, t_point o)
 	int			disty;
 	float		dist;
 
-	dist = STEP;
+	dist = 0;
 	while (dist < MAXDIST)
 	{
 		distx = (float)(PLAYER->x + PLAYER->eye_x * dist);
 		disty = (float)(PLAYER->y + PLAYER->eye_y * dist);
-		if (MAP[(int)PLAYER->y][(int)PLAYER->x] == '1')
-			break ;
 		if (distx < 0 || distx > STAGE->map_la || disty < 0
 			|| disty > STAGE->map_ha || !(MAP[disty][distx]))
 		{

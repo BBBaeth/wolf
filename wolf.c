@@ -28,7 +28,7 @@ void	init_list(t_mlx *list)
 	STAGE = new_stage(list);
 	STAGE->map_nb = 0;
 	MAXDIST = 29;
-	STEP = 0.02;
+	STEP = 0.025;
 	PLAYER = new_player(list);
 	FOV = 0.5231;
 	SPEED = 0.2;
@@ -38,6 +38,8 @@ void	init_list(t_mlx *list)
 	SQ_NB = 20;
 	SQ_S = 5;
 	minimap_table(list);
+	IN_MENU = 1;
+	MENU_S = 0;
 }
 
 void	reload_pic(t_mlx *list)
@@ -55,8 +57,7 @@ int		main(int argc, char **argv)
 		list = new_list();
 		init_list(list);
 		read_map(list);
-		lets_cast(list);
-		mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMG_PTR, 0, 0);
+		lets_draw_menu(list);
 		let_mlx_loop(list);
 	}
 	return (0);

@@ -122,10 +122,5 @@ void	read_map(t_mlx *list)
 		ft_fail("Error: Map must be made of several lines.", list);
 	map_checking(list);
 	place_player(list);
-	PLAYER->x += cos(PLAYER->a) * 0.2;
-	PLAYER->y += 0.1;
-	PLAYER->y += sin(PLAYER->a) * 0.2;
-	if (PLAYER->y < 1 || PLAYER->x <= 1
-			|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1')
-		ft_fail("Error: Player spawn is invalid.", list);
+	place_the_player2(list);
 }

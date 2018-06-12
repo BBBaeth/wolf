@@ -58,6 +58,8 @@
 # define SPEED list->speed
 # define SQ_NB list->square_nb
 # define SQ_S list->square_size
+# define IN_MENU list->inside_menu
+# define MENU_S list->menu_selection
 
 typedef struct			s_point
 {
@@ -141,6 +143,8 @@ typedef struct			s_mlx
 	int					**minimap;
 	int					square_nb;
 	int					square_size;
+	int					inside_menu;
+	int					menu_selection;
 }						t_mlx;
 
 void		ft_fail(char *str, t_mlx *list);
@@ -165,8 +169,12 @@ void		color_sky_and_floor(int x, t_mlx *list);
 void		ft_draw_wall(t_mlx *list, int i, int x, t_point o);
 void		free_them_all(t_mlx *list);
 void		place_player(t_mlx *list);
+void		place_the_player2(t_mlx *list);
 void		draw_square(t_mlx *list);
 void		minimap_table(t_mlx *list);
 void		color_squares(t_mlx *list, int startx, int starty, int wall);
+void		lets_draw_menu(t_mlx *list);
+void		lets_write(t_mlx *list);
+void		choice_selected(t_mlx *list);
 
 #endif

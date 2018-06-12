@@ -20,10 +20,23 @@ int		window_closed(t_mlx *list)
 
 int		key_pressed(int key, t_mlx *list)
 {
-	if (key == 126 || key == 125)
-		move_dir(key, list);
-	else if (key == 123 || key == 124)
-		move_side(key, list);
+	if (IN_MENU == 0)
+	{
+		if (key == 126 || key == 125)
+			move_dir(key, list);
+		else if (key == 123 || key == 124)
+			move_side(key, list);
+	}
+	else
+	{
+		if (key == 125 && MENU_S < 2)
+			MENU_S++;
+		if (key == 126 && MENU_S > 0)
+			MENU_S--;
+		if (key == 36)
+			choice_selected(list);
+		image_replacer(list);
+	}
 	return (0);
 }
 
