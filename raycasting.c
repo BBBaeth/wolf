@@ -20,7 +20,8 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 	FLOOR = HA  - ROOF;
 	WALLH = ((float)FLOOR - (float)ROOF);
 	o.y = 0;
-	color_sky_and_floor(x, list);
+	if (ROOF > 0 || FLOOR < HA + 1)
+		color_sky_and_floor(x, list);
 	if (UP == 1)
 		i = 0;
 	else if (UP == -1)
@@ -88,6 +89,7 @@ void			lets_search(int x, t_mlx *list, t_point o)
 	dist = 0;
 	while (dist < MAXDIST)
 	{
+		dist += STEP;
 		distx = (float)(PLAYER->x + PLAYER->eye_x * dist);
 		disty = (float)(PLAYER->y + PLAYER->eye_y * dist);
 		if (distx < 0 || distx > STAGE->map_la || disty < 0
@@ -98,7 +100,6 @@ void			lets_search(int x, t_mlx *list, t_point o)
 		}
 		if (MAP[disty][distx] == '1')
 			break ;
-		dist += STEP;
 	}
 	if (dist < MAXDIST)
 		get_dir(distx, disty, dist, list);
@@ -116,7 +117,7 @@ void			lets_cast(t_mlx *list)
 	o.x = 0;
 	while (x < LA)
 	{
-		RAY = (PLAYER->a - FOV / 2.0) + atan((float)x / (float)LA * FOV);
+		RAY = (PLAYER->a - FOV / 2) + (float)((float)x / (float)LA * FOV);
 		PLAYER->eye_x = cosf(RAY);
 		PLAYER->eye_y = sinf(RAY);
 		lets_search(x, list, o);
