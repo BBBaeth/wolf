@@ -48,10 +48,10 @@ void	color_the_floor(int x, t_mlx *list, int color_floor)
 		pos = (x * BPP) + (color_floor * S_L);
 		if (x < LA && color_floor < HA && x >= 0 && color_floor >= 0)
 		{
-			IMG_DATA[pos + 0] = (char)280 - color_floor / 4;
+			IMG_DATA[pos + 0] = (char)300 - color_floor / 3;
 			IMG_DATA[pos + 1] = (char)100;
 			IMG_DATA[pos + 2] = (char)160;
-			IMG_DATA[pos + 3] = (char)230 - color_floor / 5;
+			IMG_DATA[pos + 3] = (char)280 - color_floor / 4;
 		}
 	}
 }

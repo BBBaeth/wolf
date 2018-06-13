@@ -27,31 +27,25 @@ void	next_level(t_mlx *list)
 
 int		ft_security(t_mlx *list, float x, float y, int key)
 {
-	if (!(MAP[(int)PLAYER->y][(int)PLAYER->x])
-		|| MAP[(int)PLAYER->y][(int)PLAYER->x] == '1'
-				|| (key == 126 && MAP[(int)(PLAYER->y + sin(PLAYER->a) * 0.3)]
-					[(int)(PLAYER->x + cos(PLAYER->a) * 0.3)] == '1')
-					|| (key == 125 &&
-						MAP[(int)(PLAYER->y - sin(PLAYER->a) * 0.3)]
-							[(int)(PLAYER->x - cos(PLAYER->a) * 0.3)] == '1'))
+	float		count;
+
+	count = 0.14;
+	while (count <= SPEED)
 	{
-		PLAYER->x = x;
-		PLAYER->y = y;
-		return (0);
-	}
-	if ((key == 126 && 
-		((MAP[(int)(PLAYER->y + sin(PLAYER->a) * 0.3)][(int)(PLAYER->x)]
-			== '1'
-				||( MAP[(int)PLAYER->y][(int)(PLAYER->x + cos(PLAYER->a) * 0.3)]
-					== '1'))
-					|| (MAP[(int)PLAYER->y][(int)(PLAYER->x - cos(PLAYER->a) * 0.3)]
-						== '1')
-					|| (MAP[(int)(PLAYER->y - sin(PLAYER->a) * 0.3)][(int)(PLAYER->x)]
-						== '1'))))
-	{
-		PLAYER->x = x;
-		PLAYER->y = y;
-		return (0);
+		if (!(MAP[(int)y][(int)x]) || MAP[(int)y][(int)x] == '1'
+			|| MAP[(int)(floor(y))][(int)(floor(x))] == '1')
+			return (0);
+		if (key == 126)
+		{
+			x += cos(PLAYER->a) * count;
+			y += sin(PLAYER->a) * count;
+		}
+		else
+		{
+			x -= cos(PLAYER->a) * count;
+			y -= sin(PLAYER->a) * count;
+		}
+		count += 0.02;
 	}
 	return (1);
 }

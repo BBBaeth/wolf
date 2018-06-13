@@ -14,8 +14,8 @@
 
 void	init_list(t_mlx *list)
 {
-	HA = 840;
-	LA = 1300;
+	HA = 740;
+	LA = 1000;
 	if (!(MLX_PTR = mlx_init()))
 		ft_fail("Error: Connection failed.", list);
 	if (!(WIN_PTR = mlx_new_window(MLX_PTR, LA, HA, "WOLF3D")))
@@ -27,11 +27,11 @@ void	init_list(t_mlx *list)
 	BPP = BPP / 8;
 	STAGE = new_stage(list);
 	STAGE->map_nb = 0;
-	MAXDIST = 29;
+	MAXDIST = 40;
 	STEP = 0.025;
 	PLAYER = new_player(list);
-	FOV = 0.5231;
-	SPEED = 0.2;
+	FOV = 1.0472 / 2;
+	SPEED = 0.25;
 	list->minimap_h = 100;
 	list->minimap_l = 100;
 	generate_texture(list);

@@ -47,27 +47,30 @@ int		move_dir(int key, t_mlx *list)
 
 	x = PLAYER->x;
 	y = PLAYER->y;
+	if (ft_security(list, x, y, key) == 0)
+		return (-1);
 	if (key == 126)
 	{
-		PLAYER->x += cos(PLAYER->a) * SPEED;
-		PLAYER->y += sin(PLAYER->a) * SPEED;
+		x += cos(PLAYER->a) * SPEED;
+		y += sin(PLAYER->a) * SPEED;
 	}
 	else if (key == 125)
 	{
-		PLAYER->x -= cos(PLAYER->a) * SPEED;
-		PLAYER->y -= sin(PLAYER->a) * SPEED;
+		x -= cos(PLAYER->a) * SPEED;
+		y -= sin(PLAYER->a) * SPEED;
 	}
-	if (ft_security(list, x, y, key))
-		image_replacer(list);
+	PLAYER->x = x;
+	PLAYER->y = y;
+	image_replacer(list);
 	return (0);
 }
 
 int		move_side(int key, t_mlx *list)
 {
 	if (key == 123)
-		PLAYER->a -= 0.15 * 0.15;
+		PLAYER->a -= 0.02;
 	else if (key == 124)
-		PLAYER->a += 0.15 * 0.15;
+		PLAYER->a += 0.02;
 	if (PLAYER->a >= 6.30 || PLAYER->a <= -6.30)
 		PLAYER->a = 0;
 	image_replacer(list);

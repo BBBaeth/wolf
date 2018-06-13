@@ -16,9 +16,9 @@ void			lets_persp(int x, float dist, t_mlx *list, t_point o)
 {
 	int			i;
 
-	ROOF = ((float)HA / 2 - LA / (float)dist);
+	ROOF = (HA / 2 - LA / dist);
 	FLOOR = HA  - ROOF;
-	WALLH = ((float)FLOOR - (float)ROOF);
+	WALLH = FLOOR - ROOF;
 	o.y = 0;
 	if (ROOF > 0 || FLOOR < HA + 1)
 		color_sky_and_floor(x, list);
@@ -44,10 +44,9 @@ float			get_ox(t_mlx *list, float dist, int i)
 {
 	float		collision_point;
 
-	collision_point = 0;
 	if (UP != 0)
 		collision_point = (float)(PLAYER->x + PLAYER->eye_x * dist);
-	else if (RIGHT != 0)
+	if (RIGHT != 0)
 		collision_point = (float)(PLAYER->y + PLAYER->eye_y * dist);
 	collision_point -= floor(collision_point);
 	return (collision_point * list->t[i].width);
@@ -98,7 +97,7 @@ void			lets_search(int x, t_mlx *list, t_point o)
 			dist = MAXDIST;
 			break ;
 		}
-		if (MAP[disty][distx] == '1')
+		if (MAP[disty][distx] == '1' || MAP[(int)floor(disty)][(int)floor(distx)] == '1')
 			break ;
 	}
 	if (dist < MAXDIST)
@@ -117,9 +116,9 @@ void			lets_cast(t_mlx *list)
 	o.x = 0;
 	while (x < LA)
 	{
-		RAY = (PLAYER->a - FOV / 2) + (float)((float)x / (float)LA * FOV);
-		PLAYER->eye_x = cosf(RAY);
-		PLAYER->eye_y = sinf(RAY);
+		RAY = (PLAYER->a - FOV / 2) + ((float)x / (float)LA * FOV);
+		PLAYER->eye_x = cos(RAY);
+		PLAYER->eye_y = sin(RAY);
 		lets_search(x, list, o);
 		x++;
 	}

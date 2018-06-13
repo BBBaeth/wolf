@@ -132,11 +132,10 @@ typedef struct			s_mlx
 	t_texture			*t;
 	int					wall_height;
 	float				height_ratio;
-	int					encountered_items;
 	int					window_size;
-	int					maximal_distance;
+	float				maximal_distance;
 	float				step_size;
-	double				rayon;
+	float				rayon;
 	float				speed;
 	int					minimap_h;
 	int					minimap_l;
