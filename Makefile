@@ -5,6 +5,7 @@ SRCS = 	wolf.c			\
 		utilitaries.c	\
 		utilitaries2.c	\
 		utilitaries3.c	\
+		utilitaries4.c	\
 		colors.c		\
 		raycasting.c	\
 		texture.c		\

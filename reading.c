@@ -33,7 +33,7 @@ void	map_alloc(t_mlx *list)
 		ft_fail("Error: Couldn't allocate memory.", list);
 }
 
-void	name_gen(t_mlx *list)
+int		name_gen(t_mlx *list)
 {
 	char	*str;
 	char	*str2;
@@ -54,7 +54,8 @@ void	name_gen(t_mlx *list)
 		ft_fail("' found. Need map0 to start the game.", list);
 	}
 	else if (FD < 0)
-		ft_fail("State: No more maps to read. Game over.", list);
+		return (-1);
+	return (0);
 }
 
 void	map_checking2(t_mlx *list, int line)
@@ -107,7 +108,8 @@ void	read_map(t_mlx *list)
 
 	y_size = 0;
 	map_alloc(list);
-	name_gen(list);
+	if (name_gen(list) == -1)
+		ft_fail("State: No more maps to read. Game over.", list);
 	while ((ret = get_next_line(FD, &MAP[y_size])) > 0 && y_size < 2048)
 		y_size++;
 	if (y_size == 2048 || ret == -1)

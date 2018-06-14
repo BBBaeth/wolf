@@ -29,6 +29,10 @@ int		key_pressed(int key, t_mlx *list)
 	}
 	else
 	{
+		if (key == 123 && MENU_S == 1 && MENU_MNB > 0)
+			MENU_MNB--;
+		else if (key == 124 && MENU_S == 1 && MENU_MNB < 99)
+			MENU_MNB++;
 		if (key == 125 && MENU_S < 2)
 			MENU_S++;
 		if (key == 126 && MENU_S > 0)

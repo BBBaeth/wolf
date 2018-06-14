@@ -97,7 +97,8 @@ void			lets_search(int x, t_mlx *list, t_point o)
 			dist = MAXDIST;
 			break ;
 		}
-		if (MAP[disty][distx] == '1' || MAP[(int)floor(disty)][(int)floor(distx)] == '1')
+		if (MAP[disty][distx] == '1' || MAP[(int)floor(disty)]
+			[(int)floor(distx)] == '1')
 			break ;
 	}
 	if (dist < MAXDIST)

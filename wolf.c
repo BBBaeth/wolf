@@ -26,7 +26,6 @@ void	init_list(t_mlx *list)
 		ft_fail("Error: Unable to access image data.", list);
 	BPP = BPP / 8;
 	STAGE = new_stage(list);
-	STAGE->map_nb = 0;
 	MAXDIST = 40;
 	STEP = 0.025;
 	PLAYER = new_player(list);
@@ -40,6 +39,7 @@ void	init_list(t_mlx *list)
 	minimap_table(list);
 	IN_MENU = 1;
 	MENU_S = 0;
+	MENU_MNB = 0;
 }
 
 void	reload_pic(t_mlx *list)
@@ -56,7 +56,6 @@ int		main(int argc, char **argv)
 	{
 		list = new_list();
 		init_list(list);
-		read_map(list);
 		lets_draw_menu(list);
 		let_mlx_loop(list);
 	}

@@ -49,6 +49,7 @@ t_level			*new_stage(t_mlx *list)
 		ft_fail("Error: Could not allocate memory.", list);
 	new->map_la = 0;
 	new->map_ha = 0;
+	new->map_nb = 0;
 	new->map_name = NULL;
 	return (new);
 }
@@ -61,7 +62,7 @@ t_player		*new_player(t_mlx *list)
 		ft_fail("Error: Could not allocate memory.", list);
 	new->x = 5;
 	new->y = 5;
-	new->a = 1;
+	new->a = 0;
 	new->eye_x = 0;
 	new->eye_y = 0;
 	return (new);

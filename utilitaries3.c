@@ -16,10 +16,19 @@ void		choice_selected(t_mlx *list)
 	if (MENU_S == 0)
 	{
 		IN_MENU = 0;
+		STAGE->map_nb = 0;
+		read_map(list);
 		image_replacer(list);
 	}
 	if (MENU_S == 1)
 	{
+		if (map_searcher(list) > 0)
+		{
+			STAGE->map_nb = MENU_MNB;
+			IN_MENU = 0;
+			read_map(list);
+			lets_cast(list);
+		}
 	}
 	else if (MENU_S == 2)
 		window_closed(list);
@@ -27,9 +36,20 @@ void		choice_selected(t_mlx *list)
 
 void		lets_write(t_mlx *list)
 {
+	char	*map_nb;
+
+	map_nb = ft_itoa(MENU_MNB);
 	mlx_string_put(MLX_PTR, WIN_PTR, 190, 300, 0xFFFFFFF, "PLAY\n");
 	mlx_string_put(MLX_PTR, WIN_PTR, 190, 390, 0xFFFFFFF, "MAP\n");
+	if (MENU_S == 1)
+		mlx_string_put(MLX_PTR, WIN_PTR, 255, 390, 0xDDFFFFF,
+			"<< ");
+	mlx_string_put(MLX_PTR, WIN_PTR, 300, 390, 0xFFFFFFF, map_nb);
+	if (MENU_S == 1)
+		mlx_string_put(MLX_PTR, WIN_PTR, 330, 390, 0xDDFFFFF,
+		" >>");
 	mlx_string_put(MLX_PTR, WIN_PTR, 190, 480, 0xFFFFFFF, "QUIT\n");
+	free(map_nb);
 }
 
 void		lets_highlight(t_mlx *list)

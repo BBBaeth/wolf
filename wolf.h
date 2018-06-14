@@ -60,6 +60,7 @@
 # define SQ_S list->square_size
 # define IN_MENU list->inside_menu
 # define MENU_S list->menu_selection
+# define MENU_MNB list->menu_map_nb
 
 typedef struct			s_point
 {
@@ -144,6 +145,7 @@ typedef struct			s_mlx
 	int					square_size;
 	int					inside_menu;
 	int					menu_selection;
+	int					menu_map_nb;
 }						t_mlx;
 
 void		ft_fail(char *str, t_mlx *list);
@@ -175,5 +177,7 @@ void		color_squares(t_mlx *list, int startx, int starty, int wall);
 void		lets_draw_menu(t_mlx *list);
 void		lets_write(t_mlx *list);
 void		choice_selected(t_mlx *list);
+int			map_searcher(t_mlx *list);
+int			name_gen(t_mlx *list);
 
 #endif
